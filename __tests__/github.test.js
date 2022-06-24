@@ -44,12 +44,10 @@ describe('auth routes', () => {
       iat: expect.any(Number),
       exp: expect.any(Number),
     });
-    await agent.delete('/api/v1/github');
-    const res = await agent.get('/api/v1/github/dashboard');
-    console.log('here', res.body);
+    const res = await agent.delete('/api/v1/github/sessions');
     expect(res.body).toEqual({
-      message: 'You must be signed in to continue',
-      status: 401,
+      success: true,
+      message: 'Signed out successfully!',
     });
   });
   afterAll(() => {

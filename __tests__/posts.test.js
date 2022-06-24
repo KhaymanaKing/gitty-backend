@@ -11,8 +11,8 @@ describe('post routes', () => {
   });
   
   it('should login in a user and check posts', async() => {
-    const loginRes = await request
-      .agent(app)
+    const agent = request.agent(app);
+    const loginRes = await agent
       .get('/api/v1/github/callback?code=42')
       .redirects(1);
 
@@ -24,15 +24,15 @@ describe('post routes', () => {
       iat: expect.any(Number),
       exp: expect.any(Number),
     });
-    // const postRes = await request.agent(app).get('/posts');
-    // const posts = await Post.getAll();
-    // const expected = posts.map((post) => {
-    //   return{
-    //     id: post.id,
-    //     post: expect.any(String)
-    //   };
-    // });
-    // expect(postRes.body).toEqual(expected);
+    const postRes = await agent.get('/api/v1/posts');
+    const posts = await Post.getAll();
+    const expected = posts.map((post) => {
+      return{
+        id: post.id,
+        post: expect.any(String)
+      };
+    });
+    expect(postRes.body).toEqual(expected);
   });
 });
 afterAll(() => {

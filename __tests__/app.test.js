@@ -2,6 +2,8 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+jest.mock('../lib/services/github');
+
 
 describe('auth routes', () => {
   beforeEach(() => {
@@ -23,7 +25,7 @@ describe('auth routes', () => {
     expect(res.body).toEqual({
       id: expect.any(String),
       username: 'fake_github_user',
-      avatar_url: 'https://www.placedog.com/200/200',
+      avatar: 'https://www.placedog.com/200/200',
       email: 'fake-email@wowowow.com',
       iat: expect.any(Number),
       exp: expect.any(Number),

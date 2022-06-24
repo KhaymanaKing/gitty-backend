@@ -12,5 +12,11 @@ CREATE TABLE github_users (
 
 CREATE TABLE posts (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-    post TEXT (255)
+    post VARCHAR (255)
 );
+
+INSERT INTO posts (
+    post
+)
+VALUES 
+('Hey man this is kinda of like twitter or something right? Like this is just a giant knock off a giant si-')

@@ -2,6 +2,7 @@ const pool = require('../lib/utils/pool');
 const setup = require('../data/setup');
 const request = require('supertest');
 const app = require('../lib/app');
+const { Post } = require('../lib/models/Posts');
 jest.mock('../lib/services/github');
 
 describe('post routes', () => {
@@ -23,6 +24,15 @@ describe('post routes', () => {
       iat: expect.any(Number),
       exp: expect.any(Number),
     });
+    const postRes = await request.agent(app).get('/posts');
+    const posts = await Post.getAll();
+    const expected = posts.map((post) => {
+      return{
+        id: post.id,
+        post: expect.any(String)
+      };
+    });
+    expect(postRes.body).toEqual(expected);
   });
 });
 afterAll(() => {

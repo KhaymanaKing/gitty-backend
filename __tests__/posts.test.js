@@ -4,6 +4,7 @@ const request = require('supertest');
 const app = require('../lib/app');
 const { Post } = require('../lib/models/Posts');
 jest.mock('../lib/services/github');
+
 const agent = request.agent(app);
 describe('post routes', () => {
   beforeEach(() => {
@@ -11,7 +12,6 @@ describe('post routes', () => {
   });
   
   it('should login in a user and check posts', async() => {
-    // const agent = request.agent(app);
     const loginRes = await agent
       .get('/api/v1/github/callback?code=42')
       .redirects(1);

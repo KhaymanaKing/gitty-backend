@@ -13,6 +13,22 @@ describe('auth routes', () => {
       /https:\/\/github.com\/login\/oauth\/authorize\?client_id=[\w\d]+&scope=user&redirect_uri=http:\/\/localhost:7890\/api\/v1\/github\/callback/i
     );
   });
+
+  it('should login and redirect users to /api/v1/github/dashboard', async() => {
+    const res = await request
+      .agent(app)
+      .get('/api/v1/github/callback?code=42')
+      .redirects(1);
+
+    expect(res.body).toEqual({
+      id: expect.any(String),
+      username: 'fake_github_user',
+      avatar_url: 'https://www.placedog.com/200/200',
+      email: 'fake-email@wowowow.com',
+      iat: expect.any(Number),
+      exp: expect.any(Number),
+    });
+  });
   afterAll(() => {
     pool.end();
   });

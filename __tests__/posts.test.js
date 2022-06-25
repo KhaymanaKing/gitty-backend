@@ -18,7 +18,7 @@ describe('post routes', () => {
 
     expect(loginRes.body).toEqual({
       id: expect.any(String),
-      username: 'fake_github_user',
+      username: 'fake_GH_user',
       avatar: 'https://www.placedog.com/200/200',
       email: 'fake-email@wowowow.com',
       iat: expect.any(Number),
@@ -44,7 +44,7 @@ it('should login a user and create a post ', async() => {
 
   expect(loginRes.body).toEqual({
     id: expect.any(String),
-    username: 'fake_github_user',
+    username: 'fake_GH_user',
     avatar: 'https://www.placedog.com/200/200',
     email: 'fake-email@wowowow.com',
     iat: expect.any(Number),

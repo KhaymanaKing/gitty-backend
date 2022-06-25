@@ -23,7 +23,7 @@ describe('auth routes', () => {
 
     expect(res.body).toEqual({
       id: expect.any(String),
-      username: 'fake_github_user',
+      username: 'fake_GH_user',
       avatar: 'https://www.placedog.com/200/200',
       email: 'fake-email@wowowow.com',
       iat: expect.any(Number),
@@ -38,7 +38,7 @@ describe('auth routes', () => {
 
     expect(loginRes.body).toEqual({
       id: expect.any(String),
-      username: 'fake_github_user',
+      username: 'fake_GH_user',
       avatar: 'https://www.placedog.com/200/200',
       email: 'fake-email@wowowow.com',
       iat: expect.any(Number),

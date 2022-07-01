@@ -22,5 +22,5 @@ jobs:
           SALT_ROUNDS: ${{ secrets.SALT_ROUNDS }}
           COOKIE_NAME: ${{ secrets.COOKIE_NAME }}
           GH_CLIENT_ID: ${{ secrets.GH_CLIENT_ID }}
-          GH_CLIENT_SECRET: ${{ GH_CLIENT_SECRET }}
-          GH_REDIRECT_URI: ${{ GH_REDIRECT_URI }}
+          GH_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET }}
+          GH_REDIRECT_URI: ${{ secrets.GH_REDIRECT_URI }}
